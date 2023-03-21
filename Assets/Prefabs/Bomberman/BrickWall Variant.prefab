@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4425880276936555977, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
       propertyPath: m_TagString
-      value: Immovable
+      value: Destroyable
       objectReference: {fileID: 0}
     - target: {fileID: 8171022484744907011, guid: 947e7068549535a46b7812977edf631b,
         type: 3}

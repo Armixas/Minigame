@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BombermanPlayerController))]
 public class CollectibleTrigger : MonoBehaviour
 {
     [SerializeField] private string fireUP = "FireUP";
@@ -11,7 +12,7 @@ public class CollectibleTrigger : MonoBehaviour
     [SerializeField] private string bootUP = "BootUP";
     
     private BombermanPlayerController _player;
-
+    
     private void Awake()
     {
         _player = GetComponent<BombermanPlayerController>();
@@ -23,7 +24,7 @@ public class CollectibleTrigger : MonoBehaviour
         var collected = false;
 
         if (IsFireUp(otherGO))
-            _player.AddExtentedRange();
+            _player.AddExtendedRange();
         else if (IsBombUp(otherGO))
             _player.AddBombCount();
         else if (IsDeathUp(otherGO))
@@ -33,7 +34,7 @@ public class CollectibleTrigger : MonoBehaviour
         else
             return;
         
-        // Deletes collectible
+        // Deletes collectible // Unity lies, collected is used.
         collected = true;
         otherGO.SetActive(false);
         Destroy(otherGO);

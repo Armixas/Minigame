@@ -9,6 +9,9 @@ TagManager:
   - BombUP
   - FireUP
   - BootUP
+  - Undefined
+  - Immovable
+  - Destroyable
   layers:
   - Default
   - TransparentFX
