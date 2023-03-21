@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5161236681544072159}
   m_Layer: 0
   m_Name: FireUP
-  m_TagString: Untagged
+  m_TagString: FireUP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
