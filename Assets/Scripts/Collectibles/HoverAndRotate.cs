@@ -13,7 +13,7 @@ public class HoverAndRotate : MonoBehaviour
             transform.position.x,
             transform.position.y + Mathf.Sin(Time.time * hoverSpeed) * hoverDist,
             transform.position.z);
-        transform.Rotate(new Vector3(0, 50, 0) * Time.deltaTime, Space.Self);
-        transform.Rotate(new Vector3(0, 70, 0) * Time.deltaTime, Space.World);
+        transform.Rotate(new Vector3(0, 25, 0) * Time.deltaTime, Space.Self);
+        transform.Rotate(new Vector3(0, 35, 0) * Time.deltaTime, Space.World);
     }
 }

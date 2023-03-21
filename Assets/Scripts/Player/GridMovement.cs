@@ -47,9 +47,9 @@ public class GridMovement : MonoBehaviour
 
         // Detects collisions with objects
         RaycastHit hit;
-        if (Physics.Linecast(_startPosition, _endPosition, out hit))
+        if (Physics.Linecast(_startPosition, _endPosition, out hit) && hit.collider.CompareTag("Immovable"))
         {
-            //TODO: Come up with something better
+            
             _endPosition = _startPosition;
         }
         else
