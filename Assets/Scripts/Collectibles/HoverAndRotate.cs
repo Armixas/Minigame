@@ -7,6 +7,7 @@ public class HoverAndRotate : MonoBehaviour
 {
     [SerializeField] private float hoverDist = 0.01f;
     [SerializeField] private float hoverSpeed = 0.2f;
+    
     void Update()
     {
         Vector3 hoverpos = new Vector3(

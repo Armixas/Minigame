@@ -12,6 +12,9 @@ public class ExplosionFireController : MonoBehaviour
     [SerializeField, Min(1)] private int explosionDamage = 1;
 
     private Vector3 _explosionRadius;
+    
+    private void OnTriggerEnter(Collider other) => DealDamageToPlayers();
+    
     void Start()
     {
         DealDamageToPlayers();
@@ -32,9 +35,7 @@ public class ExplosionFireController : MonoBehaviour
                 scale.y,
                 scale.z * _explosionRange * _explosionMultiplier);
     }
-
-    private void OnTriggerEnter(Collider other) => DealDamageToPlayers();
-
+    
     private void DealDamageToPlayers()
     {
         // Get all colliders within explosion radius

@@ -11,8 +11,13 @@ public class BombermanPlayerController : MonoBehaviour
     [SerializeField, Min(0)] private int bombCount = 1;
     [SerializeField] bool hasBoot = false;
     
-    
     private GridMovement _movement;
+    
+    public bool HasBoot() => hasBoot;
+    public void AddExtendedRange() => bombExplosionRange++;
+    public void AddBombCount() => bombCount++;
+    public void AddBoot() => hasBoot = true;
+    public void KillPlayer() => Destroy(gameObject);
 
     private void Awake()
     {
@@ -35,11 +40,6 @@ public class BombermanPlayerController : MonoBehaviour
             bombCount--;
         }
     }
-    public bool HasBoot() => hasBoot;
-    public void AddExtendedRange() => bombExplosionRange++;
-    public void AddBombCount() => bombCount++;
-    public void AddBoot() => hasBoot = true;
-    public void KillPlayer() => Destroy(gameObject);
     public void DecrementHealth()
     {
         lifeCount--;
