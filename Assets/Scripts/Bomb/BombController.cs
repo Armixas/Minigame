@@ -16,17 +16,15 @@ public class BombController : MonoBehaviour
     
     // TODO: Bomb needs some kind of ticking animation
     // maybe some kind of scale transformation too
-
-    private BombermanPlayerController _player;
     private int _explosionRange;
     
-    public int SetExplosionRange(int range) => _explosionRange = range;
     
-    private void Awake()
-    {
-        _player = GetComponentInParent<BombermanPlayerController>();
-    }
-    // Update is called once per frame
+    public BombermanPlayerController player;
+    
+    public int SetExplosionRange(int range) => _explosionRange = range;
+
+
+
     void Update()
     {
         fuseTime -= Time.deltaTime;
@@ -41,20 +39,40 @@ public class BombController : MonoBehaviour
     {
         RaycastHit hit;
         
-        BombRaycast();
+        InitialExplosion();
+        
         //TODO: Player needs to take damage
         gameObject.SetActive(true);
         Destroy(gameObject);
+        
     }
 
-    private void BombRaycast()
+
+    private void OnDestroy()
     {
-        List<Vector3> vectors = new List<Vector3>(){ Vector3.forward, Vector3.back, Vector3.left, Vector3.right, Vector3.up };
+        // Spawns explosion fire
+        InstantiateFire("x");
+        InstantiateFire("z");
+        
+        player.AddBombCount();
+    }
+
+    private void InstantiateFire(string axis)
+    {
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        ExplosionFireController fire = explosion.GetComponent<ExplosionFireController>();
+        fire.SetFireRadius(_explosionRange);
+        fire.SetFireRadius(axis);
+    }
+
+    private void InitialExplosion()
+    {
+        List<Vector3> vectors = new List<Vector3>(){ Vector3.forward, Vector3.back, Vector3.left, Vector3.right};
         RaycastHit hit;
         for (int i = 0; i < vectors.Count; i++)
         {
             Vector3 endPos = transform.position + vectors[i] * _explosionRange;
-            if (Physics.Linecast(transform.position, endPos/*vectors[i] * explosionRadius*/, out hit))
+            if (Physics.Linecast(transform.position, endPos, out hit))
                 {
                     if(hit.collider.CompareTag("Destroyable"))
                         Destroy(hit.collider.gameObject);
@@ -66,7 +84,12 @@ public class BombController : MonoBehaviour
     {
         // TODO: Fix as it doesn't seem to work
         // Checks if bomb already exists at current position
-        if(other.gameObject.CompareTag("Bomb"))
-            Destroy(gameObject);
+        if (other.gameObject.CompareTag("Bomb"))
+        {
+            var go = gameObject;
+            
+            //go.SetActive(false);
+            //Destroy(go);
+        }
     }
 }

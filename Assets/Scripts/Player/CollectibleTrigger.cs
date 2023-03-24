@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BombermanPlayerController))]
 public class CollectibleTrigger : MonoBehaviour
 {
     [SerializeField] private string fireUP = "FireUP";
@@ -39,7 +38,6 @@ public class CollectibleTrigger : MonoBehaviour
         otherGO.SetActive(false);
         Destroy(otherGO);
     }
-
     private bool IsFireUp(GameObject obj) => obj.CompareTag(fireUP);
     private bool IsBombUp(GameObject obj) => obj.CompareTag(bombUP);
     private bool IsDeathUp(GameObject obj) => obj.CompareTag(deathUP);

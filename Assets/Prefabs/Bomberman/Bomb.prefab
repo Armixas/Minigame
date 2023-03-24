@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 131813845489274049}
   - component: {fileID: 1029791687885602846}
   - component: {fileID: 2754620747674753851}
-  - component: {fileID: 7958724255082262250}
-  - component: {fileID: 8588837250749933326}
+  - component: {fileID: -6295126139184761343}
+  - component: {fileID: -5718240776224355073}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Bomb
@@ -85,20 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7958724255082262250
-SphereCollider:
+--- !u!65 &-6295126139184761343
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7377618462014041310}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8588837250749933326
+--- !u!114 &-5718240776224355073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33012d3c3f25fd44da26151934c68132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuseTime: 6
-  explosionRadius: 1
-  powerUpRadius: 0
-  explosionPrefab: {fileID: 0}
+  fuseTime: 4.5
+  explosionPrefab: {fileID: 5981486598564661534, guid: fbe39c4034cce2a49ac6f653ac190c44,
+    type: 3}
+  player: {fileID: 0}

@@ -3616,11 +3616,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 324683469392630772, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 324683469392630772, guid: 947e7068549535a46b7812977edf631b,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 6
       objectReference: {fileID: 0}
@@ -3704,6 +3699,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c66437caabd41d4b9985a2500a0a7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0cd6bcb6-b714-48c7-a08e-ec8e9d048fdd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   moveToTime: 0.25
 --- !u!114 &1222179060
 MonoBehaviour:
@@ -3830,7 +3834,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 7377618462014041310, guid: 6bcdc7839bd490843a98d993b0420140,
     type: 3}
-  lifeCount: 3
   bombExplosionRange: 1
   bombCount: 1
   hasBoot: 0

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-[RequireComponent(typeof(BombermanPlayerController))]
 public class GridMovement : MonoBehaviour
 {
     private bool _isMoving;
@@ -23,7 +19,7 @@ public class GridMovement : MonoBehaviour
 
     public bool IsPlayerMoving() => _isMoving;
 
-    public bool CanMove(Collider col)
+    private bool CanMove(Collider col)
     {
         
         if (col.CompareTag("Immovable") ||  col.CompareTag("Destroyable"))
@@ -68,8 +64,7 @@ public class GridMovement : MonoBehaviour
         _endPosition = _startPosition + direction;
 
         // Detects collisions with objects
-        RaycastHit hit;
-        if (Physics.Linecast(_startPosition, _endPosition, out hit) 
+        if (Physics.Linecast(_startPosition, _endPosition, out RaycastHit hit) 
             && !CanMove(hit.collider))
         {
             
