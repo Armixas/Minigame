@@ -6,17 +6,17 @@ public class GridMovement : MonoBehaviour
     private bool _isMoving;
     private Vector3 _startPosition;
     private Vector3 _endPosition;
-
+    public Animator animator;
     [SerializeField]
     private float moveToTime = 0.25f;
+    
 
     private BombermanPlayerController _player;
-    
     public void Start()
     {
         _player = GetComponent<BombermanPlayerController>();
     }
-
+   
     public bool IsPlayerMoving() => _isMoving;
 
     private bool CanMove(Collider col)
@@ -55,6 +55,7 @@ public class GridMovement : MonoBehaviour
             StartCoroutine(MovePlayer(Vector3.left));
     }
 
+    
     private IEnumerator MovePlayer(Vector3 direction)
     {
         _isMoving = true;
@@ -82,8 +83,12 @@ public class GridMovement : MonoBehaviour
             }
 
             transform.position = _endPosition;
+
         }
-        
+
         _isMoving = false;
     }
+
+
+
 }
