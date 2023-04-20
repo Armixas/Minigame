@@ -38,12 +38,14 @@ public class BombController : MonoBehaviour
     private void Explode()
     {
         RaycastHit hit;
+        GameObject obj;
         
         InitialExplosion();
         
         //TODO: Player needs to take damage
-        gameObject.SetActive(true);
-        Destroy(gameObject);
+        
+        (obj = gameObject).SetActive(true);
+        Destroy(obj);
         
     }
 

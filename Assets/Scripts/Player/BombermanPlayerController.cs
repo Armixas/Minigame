@@ -10,7 +10,7 @@ public class BombermanPlayerController : MonoBehaviour
     [SerializeField, Min(0)] private int bombExplosionRange = 1; // FireUp++
     [SerializeField, Min(0)] private int bombCount = 1;
     [SerializeField] bool hasBoot = false;
-    
+
     private GridMovement _movement;
     
     public bool HasBoot() => hasBoot;
@@ -22,6 +22,7 @@ public class BombermanPlayerController : MonoBehaviour
     private void Awake()
     {
         _movement = GetComponent<GridMovement>();
+        
     }
 
     public void DropBomb(InputAction.CallbackContext context)

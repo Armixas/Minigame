@@ -1,20 +1,35 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class GridMovement : MonoBehaviour
 {
     private bool _isMoving;
     private Vector3 _startPosition;
     private Vector3 _endPosition;
-    public Animator animator;
     [SerializeField]
     private float moveToTime = 0.25f;
     
+    private Animator _animator;
+    
+    
 
     private BombermanPlayerController _player;
+    private Vector3 _movement;
+
+    private void Awake()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
+
     public void Start()
     {
         _player = GetComponent<BombermanPlayerController>();
+        _animator.SetFloat("Horizontal", 0);
+        _animator.SetFloat("Vertical", 0);
     }
    
     public bool IsPlayerMoving() => _isMoving;
@@ -59,6 +74,23 @@ public class GridMovement : MonoBehaviour
     private IEnumerator MovePlayer(Vector3 direction)
     {
         _isMoving = true;
+        
+        if (direction == Vector3.forward)
+        {
+            _animator.SetFloat("Vertical", 1);
+        }
+        else if (direction == Vector3.back)
+        {
+            _animator.SetFloat("Vertical", -1);
+        }
+        else if (direction == Vector3.right)
+        {
+            _animator.SetFloat("Horizontal", 1);
+        }
+        else if (direction == Vector3.left)
+        {
+            _animator.SetFloat("Horizontal", -1);
+        }
 
         float elapsedTime = 0.0f;
         _startPosition = transform.position;
