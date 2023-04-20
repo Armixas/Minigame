@@ -30,6 +30,7 @@ public class GridMovement : MonoBehaviour
         _player = GetComponent<BombermanPlayerController>();
         _animator.SetFloat("Horizontal", 0);
         _animator.SetFloat("Vertical", 0);
+        _animator.speed = 0.75f;
     }
    
     public bool IsPlayerMoving() => _isMoving;
@@ -77,18 +78,22 @@ public class GridMovement : MonoBehaviour
         
         if (direction == Vector3.forward)
         {
+            _animator.SetFloat("Horizontal", 0);
             _animator.SetFloat("Vertical", 1);
         }
         else if (direction == Vector3.back)
         {
+            _animator.SetFloat("Horizontal", 0);
             _animator.SetFloat("Vertical", -1);
         }
         else if (direction == Vector3.right)
         {
+            _animator.SetFloat("Vertical", 0);
             _animator.SetFloat("Horizontal", 1);
         }
         else if (direction == Vector3.left)
         {
+            _animator.SetFloat("Vertical", 0);
             _animator.SetFloat("Horizontal", -1);
         }
 
@@ -120,4 +125,7 @@ public class GridMovement : MonoBehaviour
 
         _isMoving = false;
     }
+
+
+
 }

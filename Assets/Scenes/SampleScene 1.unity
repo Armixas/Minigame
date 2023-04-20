@@ -1636,7 +1636,6 @@ GameObject:
   - component: {fileID: 700293388}
   - component: {fileID: 700293390}
   - component: {fileID: 700293389}
-  - component: {fileID: 700293393}
   - component: {fileID: 700293394}
   m_Layer: 0
   m_Name: Zombie
@@ -1654,7 +1653,7 @@ Transform:
   m_GameObject: {fileID: 700293387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1222179071}
@@ -1672,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14af4fc70038b7b4c817ade9ceaf964d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezeXZAxis: 1
+  freezeXZAxis: 0
 --- !u!212 &700293390
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1725,20 +1724,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &700293393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700293387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90027d290e9ea0d41abe77ce45f80b1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraHolder: {fileID: 0}
-  offset: {x: 0, y: 1, z: -4}
 --- !u!95 &700293394
 Animator:
   serializedVersion: 5
@@ -2871,14 +2856,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.32321313, y: -0, z: -0, w: 0.9463262}
-  m_LocalPosition: {x: 4.07, y: 4.52, z: -2.07}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 4.07, y: 4.887, z: 0.169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 37.715, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3846,7 +3831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c66437caabd41d4b9985a2500a0a7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 700293394}
   moveToTime: 0.25
 --- !u!114 &1222179060
 MonoBehaviour:
