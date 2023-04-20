@@ -120,7 +120,4 @@ public class GridMovement : MonoBehaviour
 
         _isMoving = false;
     }
-
-
-
 }

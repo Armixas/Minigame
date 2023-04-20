@@ -10,10 +10,11 @@ public class HoverAndRotate : MonoBehaviour
     
     void Update()
     {
+        var transformpos = transform.position;
         Vector3 hoverpos = new Vector3(
-            transform.position.x,
-            transform.position.y + Mathf.Sin(Time.time * hoverSpeed) * hoverDist,
-            transform.position.z);
+            transformpos.x,
+            transformpos.y + Mathf.Sin(Time.time * hoverSpeed) * hoverDist,
+            transformpos.z);
         
         transform.position = hoverpos;
         
