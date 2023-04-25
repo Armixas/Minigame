@@ -15,19 +15,18 @@ public class GlobalPlayerController : MonoBehaviour
     
     private bool isGrounded;
     private bool jumped = false;
-        // Start is called before the first frame update
+
     void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
     }
-
-    // Update is called once per frame
+    
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         movementInput = callbackContext.ReadValue<Vector2>();
     }
 
-    public void OnJump(InputAction.CallbackContext callbackContext)
+    public void DropBomb(InputAction.CallbackContext callbackContext)
     {
         jumped = callbackContext.action.triggered;
     }
