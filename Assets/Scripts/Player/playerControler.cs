@@ -32,6 +32,7 @@ public class playerControler : MonoBehaviour
 
     void Start()
     {
+
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         lastPosition = transform.position;
         _animator = GetComponentInChildren<Animator>();
@@ -42,7 +43,7 @@ public class playerControler : MonoBehaviour
         distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
-    public void OnMoveUpDpwn(InputAction.CallbackContext callbackContext)
+    public void OnMoveUpDown(InputAction.CallbackContext callbackContext)
     {
         movementInput.y = callbackContext.ReadValue<Vector2>().y;
     }
@@ -52,8 +53,9 @@ public class playerControler : MonoBehaviour
         movementInput.x = callbackContext.ReadValue<Vector2>().x;
     }
 
-    public void OnJump(InputAction.CallbackContext callbackContext)
+    public void OnJumping(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("Jump");
         jumped = callbackContext.action.triggered;
     }
 
@@ -85,7 +87,7 @@ public class playerControler : MonoBehaviour
             if (Mathf.Abs(_rigidbody.velocity.magnitude) < playerSpeed * 1.0f)
                 _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            if (IsGrounded() && Input.GetButton("Jump"))
+            if (IsGrounded() && jumped)
             {
                 _rigidbody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * jumpHeight * gravity), velocity.z);
             }
