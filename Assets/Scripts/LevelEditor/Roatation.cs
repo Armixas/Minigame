@@ -15,12 +15,15 @@ public class Roatation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, roationAngle * Time.deltaTime); //rotates 50 degrees per second around z axis
+        transform.Rotate(0, roationAngle * Time.deltaTime, 0); //rotates 50 degrees per second around z axis
        
     }
 
     private void upSpeed()
     {
+        if (roationAngle >= 180)
+            return;
+        else
         roationAngle += speedUp;
     }
 }
