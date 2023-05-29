@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 public class spawnPlayer : MonoBehaviour
 {
     private GameObject playerPrefab;
-
+    private bool jumped;
     // Start is called before the first frame update
     void Start()
     {
+
         playerPrefab = GetComponent<PlayerInputManager>().playerPrefab;
     }
 
@@ -18,6 +19,7 @@ public class spawnPlayer : MonoBehaviour
         //playerPrefab.transform.position = new Vector3(-2, 1, -3);
 
     }
+
 }
 
     // Update is called once per frame

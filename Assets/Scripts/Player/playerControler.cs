@@ -16,14 +16,12 @@ public class playerControler : MonoBehaviour
     private Vector2 movementInput = Vector2.zero;
 
     private bool jumped = false;
-
-    //private bool Canjump = true;
-
     private Vector3 lastPosition;
     private Animator _animator;
 
     private float distToGround;
 
+    //for stun
     //private bool canMove = true; //If player is not hitted
     //private bool isStuned = false;
     //private bool wasStuned = false; //If player was stunned before get stunned another time
@@ -33,15 +31,9 @@ public class playerControler : MonoBehaviour
     [SerializeField] private GameObject Zombie;
     [SerializeField] private GameObject Tiger;
 
+
     private void Awake()
-    {
-        //GameObject model = Instantiate(Zombie);
-        //model.transform.parent = transform;
-        //transform.position = new Vector3(-2, 5, -3);
-
-
-      
-
+    { 
 
     }
 
