@@ -1,61 +1,66 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
     [SerializeField] private float fuseTime = 4.5f;
-    
-    // Sprite or whatever will be used here
     [SerializeField] private GameObject explosionPrefab;
     
     private bool _exploded = false;
-    
-    // TODO: Bomb needs some kind of ticking animation
-    // maybe some kind of scale transformation too
     private int _explosionRange;
-    
-    
+    private Transform _bombTransform;
+    private Vector3 _initialScale;
+    private float _scaleMultiplier = 1.5f;
+
     public BombermanPlayerController player;
-    
+
     public int SetExplosionRange(int range) => _explosionRange = range;
 
-
-
-    void Update()
+    private void Awake()
     {
-        fuseTime -= Time.deltaTime;
-        if (fuseTime <= 0 && !_exploded)
-        {
-            _exploded = true;
-            Explode();
-        }
+        _bombTransform = transform;
+        _initialScale = _bombTransform.localScale;
     }
-    
+
+    private void Start()
+    {
+        StartCoroutine(ScaleBomb());
+    }
+
+    private IEnumerator ScaleBomb()
+    {
+        float scaleTime = fuseTime / 2f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < scaleTime)
+        {
+            float t = elapsedTime / scaleTime;
+            float scale = Mathf.Lerp(1f, _scaleMultiplier, t);
+            _bombTransform.localScale = _initialScale * scale;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _bombTransform.localScale = _initialScale * _scaleMultiplier;
+
+        yield return new WaitForSeconds(fuseTime - scaleTime);
+
+        Explode();
+    }
+
     private void Explode()
     {
-        RaycastHit hit;
-        GameObject obj;
-        
         InitialExplosion();
-        
-        //TODO: Player needs to take damage
-        
-        (obj = gameObject).SetActive(true);
-        Destroy(obj);
-        
+        Destroy(gameObject);
     }
-
 
     private void OnDestroy()
     {
-        // Spawns explosion fire
         InstantiateFire("x");
         InstantiateFire("z");
-        
         player.AddBombCount();
     }
 
@@ -75,23 +80,20 @@ public class BombController : MonoBehaviour
         {
             Vector3 endPos = transform.position + vectors[i] * _explosionRange;
             if (Physics.Linecast(transform.position, endPos, out hit))
-                {
-                    if(hit.collider.CompareTag("Destroyable"))
-                        Destroy(hit.collider.gameObject);
-                }
+            {
+                if(hit.collider.CompareTag("Destroyable"))
+                    Destroy(hit.collider.gameObject);
+            }
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        // TODO: Fix as it doesn't seem to work
-        // Checks if bomb already exists at current position
         if (other.gameObject.CompareTag("Bomb"))
         {
             var go = gameObject;
-            
-            //go.SetActive(false);
-            //Destroy(go);
+            // go.SetActive(false);
+            // Destroy(go);
         }
     }
 }
