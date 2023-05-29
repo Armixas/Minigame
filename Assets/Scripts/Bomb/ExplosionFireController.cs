@@ -21,37 +21,81 @@ public class ExplosionFireController : MonoBehaviour
         StartCoroutine(DestroyDelay(_explosionDelay));
     }
 
-    public void SetFireRadius(string axis)
+    public void SetFireRadius(string axis, int raycastLength)
     {
+        if(raycastLength == 0) return;
+        
         var scale = transform.localScale;
-        if(axis == "x")
+
+        var centerOffset = 0.75f;
+
+        float explosionDist = centerOffset + raycastLength * _explosionMultiplier * 0.5f;
+
+        if (axis == "center")
+        {
             transform.localScale = new Vector3(
-                scale.x * _explosionRange * _explosionMultiplier,
+                0.8f,
+                0.8f,
+                0.8f);
+        }
+        else if (axis == "x")
+        {
+            transform.localScale = new Vector3(
+                scale.x * explosionDist,
                 scale.y,
                 scale.z);
-        if(axis == "z")
-            transform.localScale = new Vector3(
-                scale.x,
-                scale.y,
-                scale.z * _explosionRange * _explosionMultiplier);
+            transform.localPosition += new Vector3(centerOffset, 0f, 0f);
+        }
+        else if (axis == "z")
+       {
+           transform.localScale = new Vector3(
+               scale.x,
+               scale.y,
+               scale.z * explosionDist);
+            transform.localPosition += new Vector3(0f, 0f, centerOffset);
+        }
+       else if (axis == "-x")
+       {
+           transform.localScale = new Vector3(
+               scale.x * explosionDist,
+               scale.y,
+               scale.z);
+           transform.localPosition += new Vector3(-centerOffset, 0f, 0f);
+       }
+       else if (axis == "-z")
+       {
+           transform.localScale = new Vector3(
+               scale.x,
+               scale.y,
+               scale.z * explosionDist);
+           transform.localPosition += new Vector3(0f, 0f, -centerOffset);
+       }
     }
     
     private void DealDamageToPlayers()
     {
-        // Get all colliders within explosion radius
         Collider[] colliders = Physics.OverlapBox(transform.position, _explosionRadius);
 
         foreach (Collider col in colliders)
         {
-            // Get the BombermanPlayerController component from the collider's GameObject
             BombermanPlayerController player = col.gameObject.GetComponent<BombermanPlayerController>();
-            
+
             if (player != null)
             {
-                player.DecrementHealth();
+                Vector3 playerRelativePosition = player.transform.position - transform.position;
+                bool isInRange = Mathf.Abs(playerRelativePosition.x) <= _explosionRange && Mathf.Abs(playerRelativePosition.z) <= _explosionRange;
+                
+                bool isDiagonal = Mathf.Abs(playerRelativePosition.x) > 0 && Mathf.Abs(playerRelativePosition.z) > 0;
+
+                if (isInRange 
+                    && !isDiagonal)
+                {
+                    player.DecrementHealth();
+                }
             }
         }
     }
+
 
     private IEnumerator DestroyDelay(float delay)
     {

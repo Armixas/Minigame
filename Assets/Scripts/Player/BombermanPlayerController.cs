@@ -17,7 +17,7 @@ public class BombermanPlayerController : MonoBehaviour
 
     private GridMovement _movement;
     private bool _isInvulnerable = false;
-    private float _invulnerabilityDuration = 2f;
+    private float _invulnerabilityDuration = 3.2f;
     private Renderer[] _renderers;
     private bool _isBlinking = false;
 
