@@ -1421,21 +1421,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 352552549081439322, guid: 85eb49b742c439648be13f76cb7cafbe,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1508265816357653026, guid: 85eb49b742c439648be13f76cb7cafbe,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2296473312752425491, guid: 85eb49b742c439648be13f76cb7cafbe,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4048352216899695908, guid: 85eb49b742c439648be13f76cb7cafbe,
         type: 3}
       propertyPath: m_RootOrder
@@ -1496,10 +1481,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreShowCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6873483340908005812, guid: 85eb49b742c439648be13f76cb7cafbe,
+    - target: {fileID: 5847757311611869400, guid: 85eb49b742c439648be13f76cb7cafbe,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077548878459799716, guid: 85eb49b742c439648be13f76cb7cafbe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85eb49b742c439648be13f76cb7cafbe, type: 3}
