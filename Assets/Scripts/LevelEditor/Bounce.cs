@@ -41,6 +41,6 @@ public class Bounce : MonoBehaviour
 		if (force >= 30)
 			return;
 		else
-			force += 2;
+			force += 0.5f;
 	}
 }

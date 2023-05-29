@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2633086194441823143}
   - component: {fileID: 927102195102121165}
   - component: {fileID: 1429753962618613325}
-  - component: {fileID: 6577575310525429366}
   - component: {fileID: 6577575310525429367}
+  - component: {fileID: 8662778897545676918}
+  - component: {fileID: 2220265002369922894}
   m_Layer: 0
   m_Name: WipeoutPlayer
   m_TagString: Player
@@ -29,11 +30,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3582147453664493825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 2.2, z: -1.08}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4700979594162770978}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,7 +52,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &927102195102121165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,22 +79,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1429753962618613325}
-        m_TargetAssemblyTypeName: playerControler, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4a0fd61e-5884-416d-b156-048c59f85926
-    m_ActionName: PlayerMovement/Jump[/Keyboard/space,/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1429753962618613325}
@@ -127,8 +111,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 16aeea03-d112-4395-ac94-24b623e368d1
     m_ActionName: PlayerMovement/MoveLeftRight[/Keyboard/d,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1429753962618613325}
+        m_TargetAssemblyTypeName: playerControler, Assembly-CSharp
+        m_MethodName: OnJumping
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bb793636-af55-4eec-8dd4-82c6b98b76ad
+    m_ActionName: PlayMove/Up[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard1
   m_DefaultActionMap: PlayMove
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -148,20 +148,8 @@ MonoBehaviour:
   jumpHeight: 3
   gravity: 10
   maxVelocityChange: 10
---- !u!136 &6577575310525429366
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3582147453664493825}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.22060645
-  m_Height: 0.89127135
-  m_Direction: 1
-  m_Center: {x: -0.009443879, y: 0.010068893, z: 0.009810686}
+  Zombie: {fileID: 2680086155967607691, guid: a4a7b4c127d885247afec4384193146a, type: 3}
+  Tiger: {fileID: 2680086155967607691, guid: 0e5070b1d75dd404ba59c915123d7c0a, type: 3}
 --- !u!114 &6577575310525429367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,78 +163,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newgameObject: {fileID: 3582147453664493825}
---- !u!1001 &7209321959099377582
-PrefabInstance:
+--- !u!114 &8662778897545676918
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 602421793660940092}
-    m_Modifications:
-    - target: {fileID: 2680086155967607691, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_Name
-      value: Zombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a4a7b4c127d885247afec4384193146a, type: 3}
---- !u!4 &4700979594162770978 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2680086155967607692, guid: a4a7b4c127d885247afec4384193146a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7209321959099377582}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582147453664493825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4130f8b4eaca27149849fa9c315cd403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2220265002369922894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582147453664493825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40408388, y: 0.94106686, z: 0.20519051}
+  m_Center: {x: -0.016787574, y: 0.02946657, z: -0.008924603}
