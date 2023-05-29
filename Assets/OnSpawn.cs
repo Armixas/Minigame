@@ -9,8 +9,9 @@ public class OnSpawn : MonoBehaviour
 
     private void Awake()
     {
+
         GameObject model = Instantiate(Zombie);
-    model.transform.parent = transform;
+        model.transform.parent = transform;
         transform.position = new Vector3(-2, 5, -3);
     }
 }
