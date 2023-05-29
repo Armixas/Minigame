@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class BombermanPlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject bombPrefab;
@@ -12,6 +14,8 @@ public class BombermanPlayerController : MonoBehaviour
     [SerializeField] bool hasBoot = false;
 
     private GridMovement _movement;
+    private bool _isInvulnerable = false;
+    private float _invulnerabilityDuration = 2f;
     
     public bool HasBoot() => hasBoot;
     public void AddExtendedRange() => bombExplosionRange++;
@@ -22,13 +26,11 @@ public class BombermanPlayerController : MonoBehaviour
     private void Awake()
     {
         _movement = GetComponent<GridMovement>();
-        
     }
 
     public void DropBomb(InputAction.CallbackContext context)
     {
-        if (_movement.IsPlayerMoving()
-            || bombCount < 1)
+        if (_movement.IsPlayerMoving() || bombCount < 1)
             return;
 
         if (context.started)
@@ -41,12 +43,27 @@ public class BombermanPlayerController : MonoBehaviour
             bombCount--;
         }
     }
+    
     public void DecrementHealth()
     {
+        if (_isInvulnerable)
+            return;
+
         lifeCount--;
+
         if (lifeCount <= 0)
             Destroy(gameObject);
+        else
+            StartCoroutine(ActivateInvulnerability());
     }
+
+    private IEnumerator ActivateInvulnerability()
+    {
+        _isInvulnerable = true;
+        yield return new WaitForSeconds(_invulnerabilityDuration);
+        _isInvulnerable = false;
+    }
+    
     private void OnDestroy()
     {
         // TODO: Add death animations and additional logic if needed

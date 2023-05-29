@@ -100,8 +100,7 @@ public class GridMovement : MonoBehaviour
         float elapsedTime = 0.0f;
         _startPosition = transform.position;
         _endPosition = _startPosition + direction;
-
-        // Detects collisions with objects
+        
         if (Physics.Linecast(_startPosition, _endPosition, out RaycastHit hit) 
             && !CanMove(hit.collider))
         {
@@ -125,7 +124,4 @@ public class GridMovement : MonoBehaviour
 
         _isMoving = false;
     }
-
-
-
 }

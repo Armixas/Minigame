@@ -1,56 +1,30 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionFireController : MonoBehaviour
 {
-    private float _explosionDelay = 3.0f;
-    [Min(1)]private int _explosionRange = 1;
-    [SerializeField]private float _explosionMultiplier = 3f;
+    private float explosionDelay = 3.0f;
+    private int explosionRange = 1;
+    private float explosionMultiplier = 3f;
+    [SerializeField] private float rectangleSize = 1f;
+    [SerializeField] private int explosionDamage = 1;
 
-    [SerializeField, Min(1)] private int explosionDamage = 1;
-
-    private Vector3 _explosionRadius;
-    
-    private void OnTriggerEnter(Collider other) => DealDamageToPlayers();
-    
-    void Start()
+    private void Start()
     {
-        DealDamageToPlayers();
-        StartCoroutine(DestroyDelay(_explosionDelay));
+        SpawnRectangles();
+        StartCoroutine(DestroyDelay(explosionDelay));
     }
 
-    public void SetFireRadius(string axis)
+    private void SpawnRectangles()
     {
-        var scale = transform.localScale;
-        if(axis == "x")
-            transform.localScale = new Vector3(
-                scale.x * _explosionRange * _explosionMultiplier,
-                scale.y,
-                scale.z);
-        if(axis == "z")
-            transform.localScale = new Vector3(
-                scale.x,
-                scale.y,
-                scale.z * _explosionRange * _explosionMultiplier);
-    }
-    
-    private void DealDamageToPlayers()
-    {
-        // Get all colliders within explosion radius
-        Collider[] colliders = Physics.OverlapBox(transform.position, _explosionRadius);
+        // Spawn two rectangles perpendicular to each other
+        GameObject rectangle1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        rectangle1.transform.position = transform.position;
+        rectangle1.transform.localScale = new Vector3(rectangleSize, 0.1f, explosionRange * explosionMultiplier);
 
-        foreach (Collider col in colliders)
-        {
-            // Get the BombermanPlayerController component from the collider's GameObject
-            BombermanPlayerController player = col.gameObject.GetComponent<BombermanPlayerController>();
-            
-            if (player != null)
-            {
-                player.DecrementHealth();
-            }
-        }
+        GameObject rectangle2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        rectangle2.transform.position = transform.position;
+        rectangle2.transform.localScale = new Vector3(explosionRange * explosionMultiplier, 0.1f, rectangleSize);
     }
 
     private IEnumerator DestroyDelay(float delay)
@@ -58,10 +32,4 @@ public class ExplosionFireController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(gameObject);
     }
-
-    public void SetFireRadius(int radius)
-    {
-        _explosionRange = radius;
-        _explosionRadius = new Vector3(_explosionRange, 0, _explosionRange);
-    } 
 }
