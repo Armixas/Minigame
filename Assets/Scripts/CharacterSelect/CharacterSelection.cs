@@ -12,6 +12,9 @@ public class CharacterSelection : MonoBehaviour
     public Button button;
     private Color defaultColor;
 
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject select;
+
     public void Start()
     {
         int i = 1;
@@ -20,8 +23,10 @@ public class CharacterSelection : MonoBehaviour
             PlayerPrefs.SetInt("SelecetedCharacter" + i, -1);
             i++;
         }
-        defaultColor = button.GetComponent<Image>().color;
-    }
+        try { defaultColor = button.GetComponent<Image>().color; }
+        catch { }
+     }
+       
     public void NextCharacter()
     {
         characters[selectedCharacter].SetActive(false);
@@ -60,5 +65,11 @@ public class CharacterSelection : MonoBehaviour
             }
             i++;
         }
+    }
+
+    public void back()
+    {
+        select.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }

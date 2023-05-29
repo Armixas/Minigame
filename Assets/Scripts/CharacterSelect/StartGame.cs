@@ -12,22 +12,28 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        int i = 1;
-        while (i < playerNumber)
+        if (PlayerPrefs.GetInt("SelecetedCharacter1") > -1 && PlayerPrefs.GetInt("SelecetedCharacter2") > -1)
         {
-            if (PlayerPrefs.GetInt("SelecetedCharacter" + i) == -1)
-            {
-                canStartNewGame = false;
-                break;
-            }
-            else
-            {
-                canStartNewGame = true;
-            }
-            i++;
-
+            canStartNewGame = true;
         }
-        //defaultColor = button.GetComponent<Image>().color;
+        else
+            canStartNewGame = false;
+        //int i = 0;
+        //while (i < playerNumber)
+        //{
+        //    if (PlayerPrefs.GetInt("SelecetedCharacter1" + i) == -1)
+        //    {
+        //        canStartNewGame = false;
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        canStartNewGame = true;
+        //    }
+        //    i++;
+
+            //}
+            ////defaultColor = button.GetComponent<Image>().color;
     }
 
     public void startGame()
@@ -35,7 +41,8 @@ public class StartGame : MonoBehaviour
         if (canStartNewGame == true)
         {
             PlayerPrefs.SetInt("PlayerNumber", playerNumber);
-            SceneManager.LoadScene("BomberMan", LoadSceneMode.Single);
+            SceneManager.LoadScene("Wipeout", LoadSceneMode.Single);
+            //SceneManager.LoadScene("BomberMan", LoadSceneMode.Single);
         }
     }
 }

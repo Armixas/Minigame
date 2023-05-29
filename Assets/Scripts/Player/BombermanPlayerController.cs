@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
 public class BombermanPlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject bombPrefab;
@@ -11,8 +13,14 @@ public class BombermanPlayerController : MonoBehaviour
     [SerializeField, Min(0)] private int bombCount = 1;
     [SerializeField] bool hasBoot = false;
 
+    [SerializeField] private float blinkInterval = 1f;
+
     private GridMovement _movement;
-    
+    private bool _isInvulnerable = false;
+    private float _invulnerabilityDuration = 2f;
+    private Renderer[] _renderers;
+    private bool _isBlinking = false;
+
     public bool HasBoot() => hasBoot;
     public void AddExtendedRange() => bombExplosionRange++;
     public void AddBombCount() => bombCount++;
@@ -22,13 +30,12 @@ public class BombermanPlayerController : MonoBehaviour
     private void Awake()
     {
         _movement = GetComponent<GridMovement>();
-        
+        _renderers = GetComponentsInChildren<Renderer>();
     }
 
     public void DropBomb(InputAction.CallbackContext context)
     {
-        if (_movement.IsPlayerMoving()
-            || bombCount < 1)
+        if (_movement.IsPlayerMoving() || bombCount < 1)
             return;
 
         if (context.started)
@@ -41,12 +48,53 @@ public class BombermanPlayerController : MonoBehaviour
             bombCount--;
         }
     }
+
     public void DecrementHealth()
     {
+        if (_isInvulnerable)
+            return;
+
         lifeCount--;
+
         if (lifeCount <= 0)
             Destroy(gameObject);
+        else
+            StartCoroutine(ActivateInvulnerability());
     }
+
+    private IEnumerator ActivateInvulnerability()
+    {
+        _isInvulnerable = true;
+        StartCoroutine(BlinkPlayer());
+        yield return new WaitForSeconds(_invulnerabilityDuration);
+        StopCoroutine(BlinkPlayer());
+        SetPlayerVisible(true);
+        _isInvulnerable = false;
+    }
+
+    private IEnumerator BlinkPlayer()
+    {
+        _isBlinking = true;
+
+        while (_isInvulnerable)
+        {
+            SetPlayerVisible(false);
+            yield return new WaitForSeconds(blinkInterval);
+            SetPlayerVisible(true);
+            yield return new WaitForSeconds(blinkInterval);
+        }
+
+        _isBlinking = false;
+    }
+
+    private void SetPlayerVisible(bool isVisible)
+    {
+        foreach (Renderer renderer in _renderers)
+        {
+            renderer.enabled = isVisible;
+        }
+    }
+
     private void OnDestroy()
     {
         // TODO: Add death animations and additional logic if needed
