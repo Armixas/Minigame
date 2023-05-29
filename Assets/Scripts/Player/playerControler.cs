@@ -30,10 +30,24 @@ public class playerControler : MonoBehaviour
     private float pushForce;
     private Vector3 pushDir;
 
+    [SerializeField] private GameObject Zombie;
+    [SerializeField] private GameObject Tiger;
+
+    private void Awake()
+    {
+        //GameObject model = Instantiate(Zombie);
+        //model.transform.parent = transform;
+        //transform.position = new Vector3(-2, 5, -3);
+
+
+      
+
+
+    }
+
     void Start()
     {
-
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
+  _rigidbody = gameObject.GetComponent<Rigidbody>();
         lastPosition = transform.position;
         _animator = GetComponentInChildren<Animator>();
 
@@ -55,7 +69,6 @@ public class playerControler : MonoBehaviour
 
     public void OnJumping(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Jump");
         jumped = callbackContext.action.triggered;
     }
 
@@ -64,15 +77,15 @@ public class playerControler : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.2f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (IsGrounded())
         {
             // Calculate how fast we should be moving
             moveDir = new Vector3(movementInput.x, 0, movementInput.y);
+            moveDir = moveDir.normalized;
             Vector3 targetVelocity = moveDir;
             targetVelocity *= playerSpeed;
-
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = _rigidbody.velocity;
             if (targetVelocity.magnitude < velocity.magnitude) //If I'm slowing down the character
@@ -87,7 +100,11 @@ public class playerControler : MonoBehaviour
             if (Mathf.Abs(_rigidbody.velocity.magnitude) < playerSpeed * 1.0f)
                 _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            if (IsGrounded() && jumped)
+            //Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
+            //_rigidbody.(move * (Time.deltaTime * playerSpeed));
+
+
+            if (jumped)
             {
                 _rigidbody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * jumpHeight * gravity), velocity.z);
             }
