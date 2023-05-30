@@ -14,6 +14,7 @@ public class ExplosionFireController : MonoBehaviour
     private Vector3 _explosionRadius;
     
     private void OnTriggerEnter(Collider other) => DealDamageToPlayers();
+    private void OnTriggerStay(Collider other) => DealDamageToPlayers();
     
     void Start()
     {
@@ -80,6 +81,10 @@ public class ExplosionFireController : MonoBehaviour
         {
             BombermanPlayerController player = col.gameObject.GetComponent<BombermanPlayerController>();
 
+            /*if (col.gameObject.CompareTag("Bomb"))
+            {
+                Destroy(col.gameObject);
+            }*/
             if (player != null)
             {
                 Vector3 playerRelativePosition = player.transform.position - transform.position;
@@ -87,15 +92,35 @@ public class ExplosionFireController : MonoBehaviour
                 
                 bool isDiagonal = Mathf.Abs(playerRelativePosition.x) > 0 && Mathf.Abs(playerRelativePosition.z) > 0;
 
-                if (isInRange 
-                    && !isDiagonal)
+                if (isInRange && !isDiagonal)
                 {
-                    player.DecrementHealth();
+                    bool obstacleInPath = CheckObstacleInPath(player.transform.position, playerRelativePosition.normalized);
+
+                    if (!obstacleInPath)
+                    {
+                        player.DecrementHealth();
+                    }
                 }
             }
         }
     }
 
+    private bool CheckObstacleInPath(Vector3 playerPosition, Vector3 direction)
+    {
+        float distance = Vector3.Distance(transform.position, playerPosition);
+
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, direction, distance);
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.CompareTag("Destroyable") || hit.collider.CompareTag("Immovable"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private IEnumerator DestroyDelay(float delay)
     {
