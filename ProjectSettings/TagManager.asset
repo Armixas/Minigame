@@ -13,6 +13,7 @@ TagManager:
   - Immovable
   - Destroyable
   - PlayerCamera
+  - Manager
   layers:
   - Default
   - TransparentFX
