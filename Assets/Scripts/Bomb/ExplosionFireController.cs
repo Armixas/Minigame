@@ -85,7 +85,11 @@ public class ExplosionFireController : MonoBehaviour
             if (col.gameObject.CompareTag("Bomb"))
             {
                 BombController bomb = col.gameObject.GetComponent<BombController>();
-                if (!CheckObstacleInPath(bomb.transform.position, bomb.transform.forward))
+                Vector3 bombRelativePosition = bomb.transform.position - transform.position;
+                bool isDiagonal = Mathf.Abs(bombRelativePosition.x) > 0 && Mathf.Abs(bombRelativePosition.z) > 0;
+                
+                if (!isDiagonal
+                    && !CheckObstacleInPath(bomb.transform.position, bombRelativePosition))
                 {
                     bomb.Explode();
                 }

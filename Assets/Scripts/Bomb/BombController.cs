@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] public float fuseTime = 4.5f;
+    [SerializeField] private float fuseTime = 4.5f;
     [SerializeField] private GameObject explosionPrefab;
     
     private bool _exploded = false;
@@ -111,6 +111,14 @@ public class BombController : MonoBehaviour
         }
     }
 
+    public void SlideBomb(Vector3 direction)
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().detectCollisions = true;
+        GetComponent<Collider>().isTrigger = true;
+        transform.position += direction;
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Bomb"))

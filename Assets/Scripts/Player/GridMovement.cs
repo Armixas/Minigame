@@ -100,13 +100,28 @@ public class GridMovement : MonoBehaviour
         float elapsedTime = 0.0f;
         _startPosition = transform.position;
         _endPosition = _startPosition + direction;
+        
+        // Needed to calculate directions for bomb slide
+        _player.startPos = _startPosition;
+        _player.endPos = _endPosition;
 
         // Detects collisions with objects
         if (Physics.Linecast(_startPosition, _endPosition, out RaycastHit hit) 
             && !CanMove(hit.collider))
         {
-            
-            _endPosition = _startPosition;
+
+            if (_player.HasBoot() && hit.collider.CompareTag("Bomb"))
+            {
+                // Slide the bomb in the movement direction
+                BombController bombController = hit.collider.GetComponent<BombController>();
+                if (bombController != null)
+                {
+                    Vector3 slideDirection = _player.GetMovementDirection();
+                    bombController.SlideBomb(slideDirection);
+                }
+            }
+
+            _endPosition = _startPosition + direction;
         }
         else
         {
