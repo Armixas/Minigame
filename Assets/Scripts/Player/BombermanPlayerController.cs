@@ -36,6 +36,12 @@ public class BombermanPlayerController : MonoBehaviour
         _renderers = GetComponentsInChildren<Renderer>();
     }
 
+    private void Start()
+    {
+        //_movement = GetComponent<GridMovement>();
+        //_renderers = GetComponentsInChildren<Renderer>();
+    }
+
     public void DropBomb(InputAction.CallbackContext context)
     {
         if (_movement.IsPlayerMoving() || bombCount < 1)
