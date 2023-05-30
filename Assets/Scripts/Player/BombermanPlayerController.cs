@@ -20,6 +20,9 @@ public class BombermanPlayerController : MonoBehaviour
     private float _invulnerabilityDuration = 3.2f;
     private Renderer[] _renderers;
     private bool _isBlinking = false;
+    
+    public Vector3 startPos = Vector3.zero;
+    public Vector3 endPos = Vector3.zero;
 
     public bool HasBoot() => hasBoot;
     public void AddExtendedRange() => bombExplosionRange++;
@@ -93,6 +96,11 @@ public class BombermanPlayerController : MonoBehaviour
         {
             renderer.enabled = isVisible;
         }
+    }
+
+    public Vector3 GetMovementDirection()
+    {
+        return endPos-startPos;
     }
 
     private void OnDestroy()
