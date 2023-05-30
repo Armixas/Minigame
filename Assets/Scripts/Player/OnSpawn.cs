@@ -13,9 +13,10 @@ public class OnSpawn : MonoBehaviour
     //[SerializeField] private GameObject Tiger;
     private GameObject left;
     private GameObject right;
+    public int playerNumber;
 
     private PlayerInput playerInput;
-    private GameObject healthGameObject;
+    public GameObject healthGameObject;
 
     private void Awake()
     {
@@ -37,7 +38,9 @@ public class OnSpawn : MonoBehaviour
             transform.position = spawnPoint1;
 
             leftButton.interactable = false;
-            Debug.Log(leftButton.interactable);
+
+            healthGameObject = GameObject.Find("Player1");
+            playerNumber = 1;
         }
         else
         {
@@ -46,7 +49,11 @@ public class OnSpawn : MonoBehaviour
             GameObject model = Instantiate(models[selectedCharacter]);
             model.transform.parent = transform;
             transform.position = spawnPoint2;
+
             rightButton.interactable = false;
+
+            healthGameObject = GameObject.Find("Player2");
+            playerNumber = 2;
         }
 
     }
