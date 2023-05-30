@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ExplosionFireController : MonoBehaviour
 {
-    private float _explosionDelay = 3.0f;
+    public float _explosionDelay = 3.0f;
+    private float _destryDely = 3.0f;
     [Min(1)]private int _explosionRange = 1;
     [SerializeField]private float _explosionMultiplier = 3f;
 
@@ -19,7 +20,7 @@ public class ExplosionFireController : MonoBehaviour
     void Start()
     {
         DealDamageToPlayers();
-        StartCoroutine(DestroyDelay(_explosionDelay));
+        StartCoroutine(DestroyDelay(_destryDely));
     }
 
     public void SetFireRadius(string axis, int raycastLength)
@@ -81,10 +82,12 @@ public class ExplosionFireController : MonoBehaviour
         {
             BombermanPlayerController player = col.gameObject.GetComponent<BombermanPlayerController>();
 
-            /*if (col.gameObject.CompareTag("Bomb"))
+            if (col.gameObject.CompareTag("Bomb"))
             {
-                Destroy(col.gameObject);
-            }*/
+               BombController bomb = col.gameObject.GetComponent<BombController>();
+               bomb.Explode();
+               
+            }
             if (player != null)
             {
                 Vector3 playerRelativePosition = player.transform.position - transform.position;

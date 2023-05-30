@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] private float fuseTime = 4.5f;
+    [SerializeField] public float fuseTime = 4.5f;
     [SerializeField] private GameObject explosionPrefab;
     
     private bool _exploded = false;
@@ -53,7 +53,7 @@ public class BombController : MonoBehaviour
         Explode();
     }
 
-    private void Explode()
+    public void Explode()
     {
         InitialExplosion();
         Destroy(gameObject);
