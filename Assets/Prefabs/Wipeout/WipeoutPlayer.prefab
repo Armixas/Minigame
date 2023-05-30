@@ -173,10 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d516361ea9a704b9cfc7d3638d2b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newgameObject: {fileID: 3582147453664493825}
-  firstDeath: 0
-  secondDeath: 0
-  thirdeath: 0
+  winingHead1: {fileID: 5008997407519889497, guid: 5d6016b69baf5874e9fb66013ae94f34,
+    type: 3}
+  winingHead2: {fileID: 5008997407519889497, guid: 37f115729877cb4439f93c950cf015e2,
+    type: 3}
+  loser: 0
 --- !u!114 &8662778897545676918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,10 @@ MonoBehaviour:
   models:
   - {fileID: 2680086155967607691, guid: 0e5070b1d75dd404ba59c915123d7c0a, type: 3}
   - {fileID: 2680086155967607691, guid: a4a7b4c127d885247afec4384193146a, type: 3}
+  spawnPoint1: {x: -2.25, y: 1.15, z: -2}
+  spawnPoint2: {x: 2.25, y: 1.15, z: -2}
+  playerNumber: 0
+  healthGameObject: {fileID: 0}
 --- !u!65 &2220265002369922894
 BoxCollider:
   m_ObjectHideFlags: 0
