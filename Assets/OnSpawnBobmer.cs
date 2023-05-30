@@ -9,8 +9,8 @@ public class OnSpawnBobmer : MonoBehaviour
     [SerializeField] private GameObject[] models;
     public GameObject spawnPoint1;
     public GameObject spawnPoint2;
-    //[SerializeField] private GameObject Zombie;
-    //[SerializeField] private GameObject Tiger;
+    [SerializeField] private GameObject Zombie;
+    [SerializeField] private GameObject Tiger;
     private GameObject left;
     private GameObject right;
     public int playerNumber;
@@ -36,12 +36,12 @@ public class OnSpawnBobmer : MonoBehaviour
         {
 
 
-            //player1
+            ////player1
             //int selectedCharacter = PlayerPrefs.GetInt("SelecetedCharacter" + 1);
             //GameObject model = Instantiate(models[selectedCharacter]);
             //model.transform.position = Vector3.zero;
             //model.transform.parent = transform;
-            transform.position = spawnPoint1.transform.position;
+            //transform.position = spawnPoint1.transform.position;
 
             leftButton.interactable = false;
 

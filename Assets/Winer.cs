@@ -18,7 +18,7 @@ public class Winer : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("BomberMan", LoadSceneMode.Single);
+        SceneManager.LoadScene("SampleScene 1", LoadSceneMode.Single);
     }
 
 }
