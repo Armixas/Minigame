@@ -6,14 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 17df88d17dc7f9c42a371bc65a993414
+  - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity
     guid: 5a5945600012c064d9b565d2ac23c25c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BomberMan.unity
     guid: 6ba0580db3fb0ff45afeb2e6480de2db
   - enabled: 1
     path: Assets/Scenes/Wipeout.unity
     guid: 03490c4b8aa164b449b2c5a55633d5bd
+  - enabled: 1
+    path: Assets/Scenes/BomberMann.unity
+    guid: 0189eb39fbd9a0442bb242bea0b7536e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 19e3e1d27ddf9594d882f8d6e8dba750,
       type: 2}
