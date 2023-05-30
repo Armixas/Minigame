@@ -84,15 +84,17 @@ public class ExplosionFireController : MonoBehaviour
 
             if (col.gameObject.CompareTag("Bomb"))
             {
-               BombController bomb = col.gameObject.GetComponent<BombController>();
-               bomb.Explode();
-               
+                BombController bomb = col.gameObject.GetComponent<BombController>();
+                if (!CheckObstacleInPath(bomb.transform.position, bomb.transform.forward))
+                {
+                    bomb.Explode();
+                }
             }
-            if (player != null)
+            else if (player != null)
             {
                 Vector3 playerRelativePosition = player.transform.position - transform.position;
                 bool isInRange = Mathf.Abs(playerRelativePosition.x) <= _explosionRange && Mathf.Abs(playerRelativePosition.z) <= _explosionRange;
-                
+
                 bool isDiagonal = Mathf.Abs(playerRelativePosition.x) > 0 && Mathf.Abs(playerRelativePosition.z) > 0;
 
                 if (isInRange && !isDiagonal)
@@ -107,6 +109,8 @@ public class ExplosionFireController : MonoBehaviour
             }
         }
     }
+
+
 
     private bool CheckObstacleInPath(Vector3 playerPosition, Vector3 direction)
     {

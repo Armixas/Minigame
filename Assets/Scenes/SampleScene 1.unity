@@ -3942,6 +3942,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4425880276936555977, guid: 947e7068549535a46b7812977edf631b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8171022484744907011, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4117,7 +4122,7 @@ MonoBehaviour:
     type: 3}
   lifeCount: 3
   bombExplosionRange: 1
-  bombCount: 1
+  bombCount: 2
   hasBoot: 0
   blinkInterval: 0.2
 --- !u!54 &1222179066
