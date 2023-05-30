@@ -14,23 +14,27 @@ public class GridMovement : MonoBehaviour
     private float moveToTime = 0.25f;
     
     private Animator _animator;
-    
-    
+    private Vector3 lastPosition;
+
 
     private BombermanPlayerController _player;
     private Vector3 _movement;
 
+    public bool forawrd = false;
+
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _player = GetComponent<BombermanPlayerController>();
+      
     }
 
     public void Start()
     {
-        _player = GetComponent<BombermanPlayerController>();
         _animator.SetFloat("Horizontal", 0);
         _animator.SetFloat("Vertical", 0);
         _animator.speed = 0.75f;
+        lastPosition = transform.position;
     }
    
     public bool IsPlayerMoving() => _isMoving;
@@ -53,6 +57,8 @@ public class GridMovement : MonoBehaviour
     {
         if (!_isMoving && context.started)
             StartCoroutine(MovePlayer(Vector3.forward));
+        forawrd = true;
+
     }
     public void MoveBack(InputAction.CallbackContext context)
     {
@@ -127,7 +133,5 @@ public class GridMovement : MonoBehaviour
 
         _isMoving = false;
     }
-
-
 
 }

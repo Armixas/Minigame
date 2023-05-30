@@ -65,55 +65,11 @@
                 },
                 {
                     "name": "",
-                    "id": "0cf30aad-3036-4fb1-9fbd-1362d5630da6",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard2",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "66df9eb0-ff7d-48d5-91cf-3a13f2d4a800",
-                    "path": "<XInputController>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bade63b0-fd8b-4d3b-94ac-35c98e707067",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard1",
-                    "action": "MoveForward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de6a810f-d493-476f-a2ff-146823dcb357",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard2",
-                    "action": "MoveForward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9e22f5ae-082b-4052-bfeb-8bcf0aab9aa3",
-                    "path": "<XInputController>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller",
                     "action": "MoveForward",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -131,28 +87,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3f0c5c21-7987-44dc-8bc0-3f3eefdc6b0f",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard2",
-                    "action": "MoveBack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f361636-3c81-4c22-8539-c01c096d9c8a",
-                    "path": "<XInputController>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller",
-                    "action": "MoveBack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7908bc7d-5569-4a13-a75d-62324b40a93d",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -164,55 +98,11 @@
                 },
                 {
                     "name": "",
-                    "id": "204a50fd-3230-4c98-92b0-11bde7631539",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard2",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "30588cb6-484b-4d57-8e6d-db0e9effede2",
-                    "path": "<XInputController>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "013fdfc6-5df8-416f-8238-1c48069287eb",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard1",
-                    "action": "DropBomb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c2f50962-8c82-4785-9f59-61640ead4138",
-                    "path": "<Keyboard>/numpad0",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard2",
-                    "action": "DropBomb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "287878f3-26ec-4add-8d0e-d938741b5ae3",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox controller",
                     "action": "DropBomb",
                     "isComposite": false,
                     "isPartOfComposite": false
