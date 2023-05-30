@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2022715422320082009}
   - component: {fileID: 557244340811291719}
   - component: {fileID: 7180649261440391490}
+  - component: {fileID: 5342097071710861839}
   m_Layer: 0
   m_Name: BootUP
   m_TagString: BootUP
@@ -54,7 +55,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5818618611830062436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afadac3a50e4d3841985214f91d05a6b, type: 3}
   m_Name: 
@@ -113,3 +114,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5342097071710861839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5818618611830062436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14af4fc70038b7b4c817ade9ceaf964d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freezeXZAxis: 0

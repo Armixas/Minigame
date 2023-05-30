@@ -70,13 +70,18 @@ PrefabInstance:
     - target: {fileID: 4425880276936555977, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
       propertyPath: m_TagString
-      value: Destroyable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8171022484744907011, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c8c8f0802a081b54fa1e3edf21279b1f, type: 2}
+    - target: {fileID: 8463409606093960433, guid: 947e7068549535a46b7812977edf631b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 947e7068549535a46b7812977edf631b, type: 3}
 --- !u!1 &2763049037600911494 stripped

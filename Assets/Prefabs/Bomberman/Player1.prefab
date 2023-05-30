@@ -209,6 +209,7 @@ MonoBehaviour:
   bombExplosionRange: 1
   bombCount: 1
   hasBoot: 0
+  blinkInterval: 1
 --- !u!114 &7984463177494420013
 MonoBehaviour:
   m_ObjectHideFlags: 0
