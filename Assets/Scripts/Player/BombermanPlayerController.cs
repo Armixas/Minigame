@@ -21,8 +21,7 @@ public class BombermanPlayerController : MonoBehaviour
     private Renderer[] _renderers;
     private bool _isBlinking = false;
     
-    public Vector3 startPos = Vector3.zero;
-    public Vector3 endPos = Vector3.zero;
+    public Vector3 direction = Vector3.zero;
 
     public bool HasBoot() => hasBoot;
     public void AddExtendedRange() => bombExplosionRange++;
@@ -100,7 +99,7 @@ public class BombermanPlayerController : MonoBehaviour
 
     public Vector3 GetMovementDirection()
     {
-        return endPos-startPos;
+        return direction;
     }
 
     private void OnDestroy()

@@ -91,6 +91,7 @@ public class ExplosionFireController : MonoBehaviour
                 if (!isDiagonal
                     && !CheckObstacleInPath(bomb.transform.position, bombRelativePosition))
                 {
+                    Debug.DrawLine(bomb.transform.position, bombRelativePosition);
                     bomb.Explode();
                 }
             }

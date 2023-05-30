@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7984463177494420013}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Immovable
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +210,8 @@ MonoBehaviour:
   bombCount: 1
   hasBoot: 0
   blinkInterval: 1
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
 --- !u!114 &7984463177494420013
 MonoBehaviour:
   m_ObjectHideFlags: 0

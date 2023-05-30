@@ -15,7 +15,9 @@ public class BombController : MonoBehaviour
     private float _scaleMultiplier = 1.5f;
 
     public BombermanPlayerController player;
+    public BombermanPlayerController bootPlayer;
     private List<int> _raycastLength;
+    private int _triggeredTimes = 0;
 
     public int SetExplosionRange(int range) => _explosionRange = range;
 
@@ -111,21 +113,57 @@ public class BombController : MonoBehaviour
         }
     }
 
-    public void SlideBomb(Vector3 direction)
+    private void OnTriggerEnter(Collider other)
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Rigidbody>().detectCollisions = true;
-        GetComponent<Collider>().isTrigger = true;
-        transform.position += direction;
-    }
-    
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Bomb"))
+        if (_triggeredTimes == 0)
         {
-            var go = gameObject;
-            // go.SetActive(false);
-            // Destroy(go);
+            _triggeredTimes++;
+            return;
+            
+        }
+        if (other.CompareTag("Player"))
+        {
+            bootPlayer = other.GetComponent<BombermanPlayerController>();
+            if (bootPlayer != null && bootPlayer.HasBoot())
+            {
+                StartCoroutine(SlideBomb(bootPlayer.direction, 0.3f));
+            }
         }
     }
+
+    public IEnumerator SlideBomb(Vector3 direction, float slideDuration)
+    {
+        Vector3 initialPosition = transform.position;
+        Vector3 targetPosition = initialPosition + direction;
+        float elapsedTime = 0f;
+        
+        Collider[] colliders = Physics.OverlapSphere(targetPosition, 0.5f);
+        bool canSlide = true;
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Destroyable") || collider.CompareTag("Player")
+                                                   || collider.CompareTag("Immovable")
+                                                   || collider.CompareTag("Bomb"))
+            {
+                canSlide = false;
+                break;
+            }
+        }
+
+        if (canSlide)
+        {
+            while (elapsedTime < slideDuration)
+            {
+                float t = elapsedTime / slideDuration;
+                transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = targetPosition;
+        }
+    }
+
+
 }
