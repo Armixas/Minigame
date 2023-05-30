@@ -1738,7 +1738,7 @@ GameObject:
   - component: {fileID: 700293394}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4014,7 +4014,7 @@ PrefabInstance:
     - target: {fileID: 4425880276936555977, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8171022484744907011, guid: 947e7068549535a46b7812977edf631b,
         type: 3}
@@ -4194,8 +4194,7 @@ MonoBehaviour:
   bombCount: 2
   hasBoot: 0
   blinkInterval: 0.2
-  startPos: {x: 0, y: 0, z: 0}
-  endPos: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &1222179066
 Rigidbody:
   m_ObjectHideFlags: 0
